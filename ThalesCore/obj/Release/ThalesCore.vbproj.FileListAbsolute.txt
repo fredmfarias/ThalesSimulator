@@ -1,9 +1,0 @@
-C:\ambiente\ThalesSimulator\ThalesCore\bin\Release\ThalesCore.dll
-C:\ambiente\ThalesSimulator\ThalesCore\bin\Release\ThalesCore.pdb
-C:\ambiente\ThalesSimulator\ThalesCore\bin\Release\ThalesCore.xml
-C:\ambiente\ThalesSimulator\ThalesCore\obj\Release\ThalesSim.Core.Resources.resources
-C:\ambiente\ThalesSimulator\ThalesCore\obj\Release\ThalesCore.vbproj.GenerateResource.cache
-C:\ambiente\ThalesSimulator\ThalesCore\obj\Release\ThalesCore.vbproj.CoreCompileInputs.cache
-C:\ambiente\ThalesSimulator\ThalesCore\obj\Release\ThalesCore.dll
-C:\ambiente\ThalesSimulator\ThalesCore\obj\Release\ThalesCore.xml
-C:\ambiente\ThalesSimulator\ThalesCore\obj\Release\ThalesCore.pdb

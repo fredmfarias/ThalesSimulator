@@ -100,9 +100,18 @@ Namespace HostCommands.BuildIn
             Log.Logger.MinorInfo("Clear PIN Block: " + clearPB)
             Log.Logger.MinorInfo("Clear PIN: " + clearPIN)
 
+
+
+
             'Decrypt's pin under host storage
             'Current implementation just trims the leading zero, added here again.
             Dim clearDBPIN As String = "0" + DecryptPINUnderHostStorage(_pinDatabase)
+
+            clearDBPIN = Right("00000" + clearDBPIN, 5)
+            clearPIN = Right("00000" + clearPIN, 5)
+
+            Log.Logger.MinorInfo("Clear PIN 1: " + clearDBPIN)
+            Log.Logger.MinorInfo("Clear PIN 2: " + clearPIN)
 
             If clearDBPIN = clearPIN Then
                 mr.AddElement(ErrorCodes.ER_00_NO_ERROR)

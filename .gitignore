@@ -1,4 +1,4 @@
-
+.vs/
 ThalesCore/bin/
 ThalesConsoleSimulator/bin/
 ThalesCore.Tests/bin/
@@ -12,3 +12,16 @@ ThalesSim.Core/bin/
 ThalesSim.Tests.Unit/bin/
 ThalesWinSimulator/bin/
 ThalesWinSimulatorSetup/bin/
+ThalesCore/obj/
+ThalesConsoleSimulator/obj/
+ThalesCore.Tests/obj/
+ThalesCore.Tests.Mono/obj/
+ThalesKeyManager/obj/
+ThalesMobileSimulator/obj/
+ThalesPVVClashingDemo/obj/
+ThalesServiceSimulator/obj/
+ThalesServiceSimulatorSetup/obj/
+ThalesSim.Core/obj/
+ThalesSim.Tests.Unit/obj/
+ThalesWinSimulator/obj/
+ThalesWinSimulatorSetup/obj/

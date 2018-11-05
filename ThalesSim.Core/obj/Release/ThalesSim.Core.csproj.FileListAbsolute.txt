@@ -1,9 +1,0 @@
-C:\ambiente\ThalesSimulator\ThalesSim.Core\bin\Release\ThalesSim.Core.dll.config
-C:\ambiente\ThalesSimulator\ThalesSim.Core\bin\Release\ThalesSim.Core.dll
-C:\ambiente\ThalesSimulator\ThalesSim.Core\bin\Release\ThalesSim.Core.pdb
-C:\ambiente\ThalesSimulator\ThalesSim.Core\bin\Release\log4net.dll
-C:\ambiente\ThalesSimulator\ThalesSim.Core\obj\Release\ThalesSim.Core.csprojAssemblyReference.cache
-C:\ambiente\ThalesSimulator\ThalesSim.Core\obj\Release\ThalesSim.Core.csproj.CoreCompileInputs.cache
-C:\ambiente\ThalesSimulator\ThalesSim.Core\obj\Release\ThalesSim.Core.csproj.CopyComplete
-C:\ambiente\ThalesSimulator\ThalesSim.Core\obj\Release\ThalesSim.Core.dll
-C:\ambiente\ThalesSimulator\ThalesSim.Core\obj\Release\ThalesSim.Core.pdb
