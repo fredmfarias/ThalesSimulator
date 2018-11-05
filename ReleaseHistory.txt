@@ -1,0 +1,280 @@
+﻿ThalesSim Release History
+=========================
+
+Unreleased
+----------------------------------------
+* Worked around the .Net limitation of weak/semi-weak key handling. Contributed
+ by smiles11uk.
+* Updated test cases to use correctly format TAK after smiles11uk's fix.
+* Updated the Key Manager to correctly update variants of single-length keys.
+* Added RY command, contributed by volosnikpk.
+* Upgraded solution to use Visual Studio 2010.
+* Fixed a problem with the DES algorithm when using weak or semi-weak keys.
+  Contributed by Bernard.
+
+2012/05/29: Version 0.9.6 beta released.
+----------------------------------------
+* Fixed a problem with the FK command where it incorrectly created
+  a new key if encrypted components were used.
+* Fixed incorrect implementation of PIN block deconstruction when a format of 05
+  was used.
+
+2011/11/25: Version 0.9.5 beta released.
+----------------------------------------
+* Fixed incorrect key scheme definition of A0 command.
+* Added a partial implementation for a custom Thales command.
+* Fixed an error in the PVV generation method. For users that have
+  established test cards using a previous version of the simulator,
+  this is a breaking change and the PVV needs to be re-calculated.
+* Added an implementation of the MS command, thanks to Cory W.
+* Added EBCDIC translation capability.
+* Added an Atalla variant implementation for the A6, FA, AW, MI, FC, FK and BY commands.
+
+2011/05/28: Version 0.9.4 beta released.
+----------------------------------------
+* Fixed incorrect definition of the OE command.
+* Added support for an old LMK storage set. This is stored in file and uses the same name as
+  the storage file name but adds the extension ".old".
+* Added an implementation of the BW command.
+* Fixed incorrect variant for ZMK on A6 command.
+* Fixed incorrect response code of PE command.
+* Fixed incorrect IV parsing on M6 and M8 commands.
+* Fixed incorrect display of header length on QH command.
+* Fixed incorrect declaration in XML definitions that resulted in unusable triple-length keys.
+* Fixed incorrect handling of BINARY data in several commands.
+* Console command Z now returns the encrypted and not the clear component.
+* Added unit tests for console commands.
+
+2011/02/01: Version 0.9.3 beta released.
+----------------------------------------
+* Added an implementation of the KQ command (contributed by nahsan, converted for XML definitions).
+* Added an implementation of the EE command.
+* Code has been added to treat a decimalization table of FFFFFFFFFFFFFFFF as an empty one. In its
+  place, the decimalization table 9876543210123456 is used. This applies to all algorithms and commands
+  that use IBM PIN.
+* BA command has been changed to also work with PINs that are padded with F.
+* Fixed the DE and EA commands to work correctly with double-length PVKs.
+* Added an implementation of the NG command.
+* Changed EC command to force odd parity on the key.
+* Fixed BU error where key variants ended up being ignored.
+* Fixed DUKPT code and G0 command, thanks to code provided by Hamdi.
+* Added a configuration parameter to control the header length.
+
+2010/11/08: Version 0.9.2 beta released.
+----------------------------------------
+* Changed NK to force an XML field definition re-read every time.
+* Added the ability to expect an end delimiter and trailer message in the message request
+  and add them to the message response.
+* Added a hex/char display to the GUI simulator.
+* Fixed the incorrect definition of the IA command.
+* Added mouse copy-paste on the console window as per workitem #7549.
+* Added an initial implementation of the G0 command.
+* Added Doxygen documentation of ThalesCore.dll.
+
+2010/10/13: Version 0.9.1 beta released.
+----------------------------------------
+* The following host commands have been added:
+    - BA: Encrypts a clear PIN text.
+    - DW: Translate a BDK from ZPK to LMK encryption.
+    - DY: Translate a BDK from LMK to ZPK encryption.
+    - CU: Verify and generate a VISA PVV.
+    - M6: Generate a MAC.
+    - M8: Verify a MAC.
+* Fixed a bug with the A6 command.
+* Added an initial implementation of the K2 host command. This particular implementation 
+  is considered an alpha version.
+* Added the ThalesKeyManager, a utility to assist with the housekeeping of test keys.
+  This utility is only functional with the simulator and is not intended for use
+  with a real HSM.
+* Introduced *a lot* of small code changes in order to make the simulator code as
+  compatible as possible with the mobile 6.0 SDK.
+* Added the ThalesMobileSimulator application, a small program that can be used to
+  run the simulator in a Windows mobile device.
+* Finally implemented a couple of methods to correctly perform byte<->char conversions according
+  to a specific locale and used them globally.
+* When parsing a field until a valid value is found, there is a chance that we'll run out of message
+  and the value will not be found but this might not signify an error condition (like the OC command).
+  To handle these cases, the AllowNotFoundValidValue xsd element has been added.
+* Changed the implementation of A4 to force odd parity on the generated keys.
+* Added a LegacyMode flag that can be used to force an old behavior (RG7000) on some commands.
+  Currently, only the GY command is affected.
+* Changed GY to force odd parity on the returned key.
+
+2010/06/16: Version 0.9 beta released.
+--------------------------------------
+* The message parsing mechanism for host commands has been completely redesigned
+  in order to use XML configuration files. The goal is to provide both greater
+  flexibility and easier creation when implementing new and/or complex host
+  commands.
+* Fixed a bug where the DC command returned a DE response instead of DD.
+* Added a console version of the simulator.
+* Implemented EMV Key Derivation Method B, added it to the PM command.
+* The following host commands have been added:
+    - BI (Generate a BDK).
+    - DE (Generate an IBM offset).
+    - CI (Translate PIN from DUKPT to ZPK.
+    - CK (Verify a DUKPT PIN using the IBM method).
+    - CM (Verify a DUKPT PIN using the VISA method).
+    - EA (Verify an interchange PIN using the IBM method).
+    - DA (Verify a terminal PIN using the IBM method).
+
+2010/04/23: Version 0.8.6 beta released.
+----------------------------------------
+
+* Fixed a bug which caused check values generated from console commands
+  to be displayed incorrectly.
+* Added redistributable setup project.
+* Fixed a bug at the EC console command that prevented use of double and
+  triple length keys.
+* Added the following host commands:
+    - B2 (echo test).
+    - BC (Verify a terminal PIN using the comparison method).
+    - BE (Verify an interchange PIN using the comparison method).
+    - NK (Command chaining).
+* Updated some message handling classes to use generics instead of array
+  lists.
+* Tentatively added support for running under Mono 2.6.3. At this stage,
+  a build script under Mono is not provided. Instead, the complete solution
+  must be build under Windows using VS.2008 and resulting binaries should
+  be copied to Linux for execution using Mono. The sole working distribution
+  under which this was tested was openSUSE 11.2.
+* An alternative configuration file has been added for use with Mono 2.6.3.
+  This file contains key/value pairs with the simulator parameters and is
+  alternatively read if there is a problem parsing the XML file.
+
+2009/12/07: Version 0.8.5 beta released.
+----------------------------------------
+
+* Added an implementation of the PM - Verify dynamic CVV command. Currently, the command
+  is working only when:
+    - the scheme ID refers to MasterCard PayPass,
+    - the key derivation method refers to Option A,
+    - the command is supplied with the PAN and track data.
+* Added an implementation of the GM command - Hash a block of data. Currently,
+  the command does not support the ISO 10118-2 and SHA-224 hash algorithms.
+* Added the following console commands:
+    - N (single-length DES calculator).
+    - $ (double-length DES calculator).
+    - T (triple-length DES calculator).
+
+2009/11/19: Version 0.8.4 beta released.
+----------------------------------------
+
+* Fixed an error in ValidateKeySchemeAndLength which resulted in returning all double length
+  keys encrypted with the variant method.
+* Fixed an error where multi-component messages didn't have their components pushed to the stack.
+* Any exceptions that are thrown by console commands are now caught and the exception error
+  is returned to the console instead of simply dropping the console TCP connection.
+* Empty messages can now be received by the TCP socket.
+* Added an ExtendedValidator for console command implementations. This allows to chain a series
+  of validators and perform several checks in sequence.
+* Added the ability to copy and paste at the console window.
+* Added the following console commands:
+    - EC (encrypt clear component).
+    - KG (generate a key).
+    - IK (imports a key).
+    - KE (exports a key).
+    - F (generate a ZMK component).
+    - Z (encrypt a clear ZMK component).
+    - D (form ZMK from encrypted components).
+
+2009/11/15: Version 0.8.3 beta released.
+----------------------------------------
+
+* Fixed a parity error bug that occured when using double and triple length length keys with commands
+  that translated from ZPK to LMK encryption (wiki item 70958).
+* Fixed a bug in the WorkerClient class that prevented correct transmission of string data.
+* Added the capability to accept and execute console commands. This is done by listening to another 
+  TCP port for commands typed-in by a user. The following commands are now implemented:
+    - A (enter the authorized state).
+    - C (cancel the authorized state).
+    - QA (query auxilliary).
+    - QC (query console).
+    - QH (query host).
+    - VR (version number).
+    - GC (generate key component).
+* Added a new console form in the Windows client simulator.
+
+2009/06/15: Version 0.8.2 beta released.
+----------------------------------------
+
+* Added the ThalesPVVClashingDemo utility. This is used to demonstrate the existence of multiple PINs per card.
+  Note that this is not always valid for all cards/PINs. 
+* Fixed a bug in Utility.RandomKey method that created invalid length keys.
+* Dumped the reflection code in WorkerClient and used the Client.RemoteEndPoint.String method to return the client IP.
+* Fixed a bug in LMKStorage.ReadLMKs method that caused the simulator to incorrectly read existing keys.
+* The simulator now uses the Invoke method to write to the text boxes on the UI thread.
+
+2009/03/08: Version 0.8.1 beta released.
+----------------------------------------
+
+* Converted code to use generics.
+* Added Windows service and setup projects.
+
+2009/03/01: Version 0.8 beta released.
+--------------------------------------
+
+* Ported to .Net 3.5, VS 2008. The code has not been reworked at all to take advantage of 3.5 available functionality, this will be taken care of in the next release. NUnit test cases have been removed in favor of VS 2008 testing unit framework. NDoc dependency has been removed. The Windows Service and setup will be re-added in the next release.
+
+2006/06/15: Version 0.7 beta released.
+--------------------------------------
+
+* New implemented command: HC.
+* GUI key type table implemented in simulator executable. 
+
+2006/06/12: Version 0.6 released.
+---------------------------------
+
+* New implemented commands: FI, FK, FM, MA, MC, ME, MQ. 
+
+2006/06/11: Version 0.5 released.
+---------------------------------
+
+* New implemented commands: AS, CW, CY, AU, AW.
+* Added new field parser method (field type VariableLengthUntilDelimiter) to facilitate parsing of variable fields whose end is signaled by a following delimiter. 
+
+2006/06/10: Version 0.4.3 released.
+-----------------------------------
+
+* Added initial version of the simulator service and related installer.
+
+2006/06/07: Version 0.4.2 released.
+-----------------------------------
+
+* Added initial version of the simulator executable.
+* Changed command explorer to ignore multiple classes that implement the same Thales command.
+
+2006/06/05: Version 0.4.1 released.
+-----------------------------------
+
+* New classes TranslateFromLMKToKey, TranslateFromKeyToLMK and NoImplementation are inherited by several commands that used similar functionality.
+* Initial project overview documentation added.
+
+2006/06/04: Version 0.4 released.
+---------------------------------
+
+* New implemented commands: HA, AE, FC, FE, MI, MG, AG.
+* Added code to allow DES encrypt/decrypt using a DES weak key. The .Net crypto implementation throws an exception when a DES weak key is used in an encrypt or decrypt operation. Although this is simply good practice, it prevents someone from using the standard LMK test suite. The library now logs a major warning when a weak key is encountered.
+
+2006/06/03: Version 0.3 released.
+---------------------------------
+
+* New implemented commands: GY, BY, FA, GC, IA, OE, FG.
+* Fixed improper termination of TCP listening thread.
+
+2006/05/29: Version 0.2.1 released.
+-----------------------------------
+
+* Minor update, added NUnit test cases.
+
+2006/05/28: Version 0.2 released.
+---------------------------------
+
+* New implemented commands: BQ, CA, CC, DC, DG, EC, JA, JC, JE, JG.
+* Fixed bugs relating to construction and decomposition of Diebold and Docutel PIN block formats.
+* After some rethink, Log4Net is dropped in favor of the current event system. Log4Net may be incorporated into the final simulator executable.
+
+2006/05/25: Version 0.1 released.
+----------------------------------
+
+This is the initial version of the library. It contains the initial implementation of a lot of things like cryptography, LMK storage, message parsing methods, host command base class and implementation of several Thales commands, TCP/IP worker class, logic to parse key schemes, key types and other stuff. The only real way to get into the library is to get into the code.

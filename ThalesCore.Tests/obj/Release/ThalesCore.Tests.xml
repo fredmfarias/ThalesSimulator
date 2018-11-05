@@ -1,0 +1,34 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ThalesCore.Tests
+</name>
+</assembly>
+<members>
+<member name="P:ThalesSim.Tests.ConsoleCommandTests.TestContext">
+<summary>
+Gets or sets the test context which provides
+information about and functionality for the current test run.
+</summary>
+</member>
+<member name="P:ThalesSim.Tests.EncryptionTests.TestContext">
+<summary>
+Gets or sets the test context which provides
+information about and functionality for the current test run.
+</summary>
+</member>
+<member name="P:ThalesSim.Tests.HostCommandTests.TestContext">
+<summary>
+Gets or sets the test context which provides
+information about and functionality for the current test run.
+</summary>
+</member>
+<member name="P:ThalesSim.Tests.PINBlockTests.TestContext">
+<summary>
+Gets or sets the test context which provides
+information about and functionality for the current test run.
+</summary>
+</member>
+</members>
+</doc>

@@ -1,0 +1,14 @@
+
+ThalesCore/bin/
+ThalesConsoleSimulator/bin/
+ThalesCore.Tests/bin/
+ThalesCore.Tests.Mono/bin/
+ThalesKeyManager/bin/
+ThalesMobileSimulator/bin/
+ThalesPVVClashingDemo/bin/
+ThalesServiceSimulator/bin/
+ThalesServiceSimulatorSetup/bin/
+ThalesSim.Core/bin/
+ThalesSim.Tests.Unit/bin/
+ThalesWinSimulator/bin/
+ThalesWinSimulatorSetup/bin/
